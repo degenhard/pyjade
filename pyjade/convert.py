@@ -3,6 +3,7 @@ import codecs
 from optparse import OptionParser
 from pyjade.utils import process
 import os
+import BeautifulSoup
 
 def convert_file():
     support_compilers_list = ['django', 'jinja', 'underscore', 'mako', 'tornado']
@@ -48,7 +49,7 @@ def convert_file():
             outfile = codecs.open(file_output, 'w', encoding='utf-8')
             outfile.write(output)
         else:
-            print output
+            print BeautifulSoup.BeautifulSoup(output).prettify()
     else:
         raise Exception('You must have %s installed!' % compiler)
 
